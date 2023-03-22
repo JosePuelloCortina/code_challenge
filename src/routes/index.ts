@@ -12,7 +12,7 @@ router.get('/', (req: Request, res: Response) => {
             if (dataArr[i] === busqueda) {
                 acumulador++;
             }
-        }
+        } 
         return acumulador;
       }
       const domains = new Array<any>();

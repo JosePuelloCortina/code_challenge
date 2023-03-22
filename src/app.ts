@@ -18,7 +18,6 @@ export class Application{
         this.app.set('port', 3000);
     }
 
-
     middlewares(){
         this.app.use(morgan('dev'))
         this.app.use(express.json());

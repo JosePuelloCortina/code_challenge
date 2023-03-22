@@ -19,7 +19,7 @@ router.get('/', (req: Request, res: Response) => {
       result.forEach(function(d, index){
         domains.push(d + "(" +contadorElemento(file.data, d) + ")");
       })
-
+ 
     res.send(domains);
 })
 

@@ -1,29 +1,11 @@
 import { Router, Request, Response } from "express";
+let file = require('../../data.json')
 
 const router = Router();
+
 router.get('/', (req: Request, res: Response) => {
-
-
-    const data = [
-       "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "youtube.com",
-        "facebook.com",
-        
-    ]
-    
-    const dataArr = new Set(data);
+    const dataArr = new Set(file.data);
     let result = [...dataArr]
-    result.sort();
-    
-
     function contadorElemento (dataArr:any, busqueda:any) {
         let acumulador = 0;
         for (let i = 0; i<dataArr.length; i++) {
@@ -35,12 +17,10 @@ router.get('/', (req: Request, res: Response) => {
       }
       const domains = new Array<any>();
       result.forEach(function(d, index){
-        domains.push(d + "(" +contadorElemento(data, d) + ")");
+        domains.push(d + "(" +contadorElemento(file.data, d) + ")");
       })
 
-      console.log(domains)
-
-      res.send(domains);
+    res.send(domains);
 })
 
 export default router;

@@ -1,24 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+let file = require('../../data.json');
 const router = (0, express_1.Router)();
 router.get('/', (req, res) => {
-    const data = [
-        "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "client.google.com",
-        "www.google.com",
-        "www.google.com",
-        "youtube.com",
-        "facebook.com",
-    ];
-    const dataArr = new Set(data);
+    const dataArr = new Set(file.data);
     let result = [...dataArr];
-    result.sort();
     function contadorElemento(dataArr, busqueda) {
         let acumulador = 0;
         for (let i = 0; i < dataArr.length; i++) {
@@ -30,7 +17,7 @@ router.get('/', (req, res) => {
     }
     const domains = new Array();
     result.forEach(function (d, index) {
-        domains.push(d + "(" + contadorElemento(data, d) + ")");
+        domains.push(d + "(" + contadorElemento(file.data, d) + ")");
     });
     console.log(domains);
     res.send(domains);
